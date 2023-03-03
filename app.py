@@ -53,13 +53,22 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_sta
 print('train data shape:', X_train.shape)
 print('test data shape:', X_test.shape)
 
-#ML model 
-from sklearn.linear_model import LogisticRegression
-lr_model = LogisticRegression(solver='lbfgs')
+#Classifier ML model pipeline
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier(n_estimators=50)
 
-lr_model.fit(X_train,y_train)
+model.fit(X_train,y_train)
 
 #Accuracy
 from sklearn import metrics
-predictions = lr_model.predict(X_test)
+predictions = model.predict(X_test)
 
+#Confusion Matrix
+df_conf_mat= pd.DataFrame(metrics.confusion_matrix(y_test, predictions), index=['ham','spam'], columns=['ham','spam'])
+print(df_conf_mat)
+
+clf_report = metrics.classification_report(y_test, predictions)
+print(clf_report)
+
+acc = metrics.accuracy_score(y_test,predictions)
+print('model accuracy: ', acc*100)
