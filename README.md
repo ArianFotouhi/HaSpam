@@ -8,4 +8,14 @@
 
 #### Random Forest is applied and despite its reasonable test accuracy rate (almost %89), the cofusion matrix crticizes the performance of model
 
-The application aims to recognize Spam and Ham text. In app.py the analysis is done based on length and punctuation of texts while in main.py it's based on content of texts. The results show the outperformance of content based analysis.
+#### main.py:
+
+#### Spam detection is based on message content. 
+
+#### Text is vectorized using TFIDF technique 
+
+#### A pipleline is employed to first vectorize then load the dat to the model 
+
+#### Random Forest is applied and that outperforms the previous model significantly by %97 test accuracy and huge imporvements in cofusion matrix
+
+#### Lastly, the model is tested by user made samples
